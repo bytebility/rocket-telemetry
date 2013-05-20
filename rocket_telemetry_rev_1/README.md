@@ -1,5 +1,5 @@
 Rocket Telemetry Logger, Rev. 1
-====
+----
 
 The first revision of my telemetry rig, built on an [Arduino UNO](http://arduino.cc/en/Main/ArduinoBoardUno) with a [Seeed SD shield (v3)](http://www.seeedstudio.com/depot/sd-card-shield-p-492.html) on top.  As seen in this [YouTube video](https://www.youtube.com/watch?v=rpGxVXfmJk8).
 
