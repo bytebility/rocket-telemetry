@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SARG Launch Site",
+        "organization": "SARG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.29955490661087,
+          32.354080966941915
+        ]
+      }
+    }
+  ]
+}
+
