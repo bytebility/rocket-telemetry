@@ -28,6 +28,20 @@
           37.949274
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Davis Road",
+        "organization": "TCC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.129539,
+          36.473161
+        ]
+      }
     }
   ]
 }
