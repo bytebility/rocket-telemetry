@@ -5,7 +5,8 @@
       "type": "Feature",
       "properties": {
         "name": "SARG Launch Site",
-        "organization": "SARG"
+        "organization": "SARG",
+        "URL": "http://sargrocket.org/"
       },
       "geometry": {
         "type": "Point",
@@ -19,7 +20,8 @@
       "type": "Feature",
       "properties": {
         "name": "Snow Ranch",
-        "organization": "LUNAR"
+        "organization": "LUNAR",
+        "URL": "http://lunar.org/"
       },
       "geometry": {
         "type": "Point",
@@ -32,8 +34,24 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Moffett Field/NASA Ames",
+        "organization": "LUNAR",
+        "URL": "http://lunar.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.051283,
+          37.408675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Davis Road",
-        "organization": "TCC"
+        "organization": "TCC",
+        "URL": "http://www.tccrockets.com/"
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +60,36 @@
           36.473161
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Del Norte",
+        "organization": "TCC",
+        "URL": "http://www.tccrockets.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.076111,
+          36.520278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Artesia",
+        "organization": "Rockonn",
+        "URL": "http://www.rockonn.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.334785,
+          38.912228
+        ]
+      }
     }
   ]
 }
-
