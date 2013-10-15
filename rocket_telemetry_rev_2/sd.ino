@@ -4,10 +4,7 @@
  * SD device support.
  */
 
-#include <SdFat.h>
-
-SdFat sd;
-SdFile dataFile;
+#include <SD.h>
 
 boolean hasSD = false;
 char dataFileName[] = "DATA-00.TXT";
@@ -17,9 +14,9 @@ void SD_Init () {
   Serial.print(F("Checking for SD device... "));
 #endif
 
-  if (sd.begin()) {
+  if (SD.begin()) {
     int dataFileIndex = 0;
-    while (sd.exists(dataFileName)) {
+    while (SD.exists(dataFileName)) {
       sprintf(dataFileName, "DATA-%02d.TXT", ++dataFileIndex);
     }
     hasSD = true;
@@ -74,8 +71,8 @@ void SD_Save_NMEA (String line) {
 
 void SD_write_line (String line) {
   if (hasSD) {
-    dataFile.open(dataFileName, O_RDWR | O_CREAT | O_AT_END);
-    if (dataFile.open(dataFileName, O_RDWR | O_CREAT | O_AT_END)) {
+    File dataFile = SD.open(dataFileName, FILE_WRITE);
+    if (dataFile) {
       dataFile.println(line);
     }
     dataFile.close();
