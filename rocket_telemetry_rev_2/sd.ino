@@ -63,7 +63,7 @@ void SD_Save_NMEA (String line) {
   // the GPS will interpret them as commands.
   String SerialSafeLine = line;
   SerialSafeLine.replace("$", "");
-  Serial.println(SerialSafeLine);s
+  Serial.println(SerialSafeLine);
 #endif
 
   SD_write_line(line);
