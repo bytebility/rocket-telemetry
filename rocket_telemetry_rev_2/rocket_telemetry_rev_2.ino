@@ -17,15 +17,12 @@
 
 // Timers
 unsigned long currentTime;
-unsigned long lastTime;
-unsigned long interval;
-unsigned int cycleCount = 0;
 
 
 void setup() {
 #ifdef SERIAL_DEBUG
-  Serial.begin(38400);
-  
+  Serial.begin(38400);  // Note: this has to be set to your GPS speed since they share the same serial port.
+
   Serial.println();
   Serial.println(F("Rocket Telemetry Logger"));
 #endif
@@ -48,38 +45,16 @@ void setup() {
 
 
 void loop () {
-  currentTime = millis();
-  interval = currentTime - lastTime;
-  
-  if (interval >= 20) {  // every 20 milliseconds aka 50 Hz
+  if (MPU6000_newdata > 0) {
+    MPU6000_newdata = 0;
+
+    currentTime = millis();
+
     MPL3115A2_Read();
     MPU6000_Read();
 
     SD_Save_Data();
-
-    // Do these things every 6th time through the main cycle
-    // This section gets called every 1000 / 20 * 6 = 8 1/3 Hz or every 120 millisecods.
-    // Doing it this way removes the need for another 'millis()' call
-    // and balances the processing load across main loop cycles.
-    cycleCount++;
-    switch (cycleCount) {
-      case(0):
-        break;
-      case(1):
-        XBee_Transmit_Data();
-        break;
-      case(2):
-        break;
-      case(3):
-        break;
-      case(4):
-        break;
-      case(5):
-        cycleCount = -1;
-        break;
-    }
-    
-    lastTime = currentTime;
+    XBee_Transmit_Data();
   }
 }
 
@@ -89,7 +64,7 @@ void serialEvent() {
 
 void prettyLights() {
   int count = 4;
-  
+
   while (count-- >= 0) {
     digitalWrite(RED_LED_PIN, HIGH);
     delay(100);
