@@ -76,10 +76,6 @@ void SD_write_line (String line) {
       dataFile.println(line);
     }
     dataFile.close();
-
-    // Make sure the SS pin for the SD card reader is set back to high to ensure 
-    // theres no crosstalk over the MPU6000
-    digitalWrite(10, HIGH);
   }
 }
 
