@@ -37,9 +37,6 @@ void setup () {
   Serial.println();
 #endif
 
-  pinMode(RED_LED_PIN, OUTPUT);
-  pinMode(BLUE_LED_PIN, OUTPUT);
-
   prettyLights();
 }
 
@@ -66,6 +63,9 @@ void serialEvent () {
 }
 
 void prettyLights () {
+  pinMode(RED_LED_PIN, OUTPUT);
+  pinMode(BLUE_LED_PIN, OUTPUT);
+
   int count = 4;
 
   while (count-- >= 0) {
