@@ -50,23 +50,38 @@ void readGps () {
       break;
     case '\n':
       // A LF means we're at the end of a NMEA message, so do some basic
-      // verification (starts with $GP and is greater than $GPxxx length) and 
+      // verification (starts with $GP and is greater than $GPxxx length) and
       // then do something with it.
       //
       // Clear the saved nmeaString var either way.
       if (nmeaString.length() > 6 && nmeaString.startsWith("$GP")) {
+
+#ifdef SERIAL_DEBUG
+        debug_NMEA();
+#endif
+
         SD_Save_NMEA(nmeaString);
 
         if (nmeaString.startsWith("$GPGGA") || nmeaString.startsWith("$GPGSA"))
           XBee_Transmit_NMEA(nmeaString);
       }
-      
+
       nmeaString = "";
       break;
     default:
       nmeaString.concat(gpsChar);
   }
 }
+
+#ifdef SERIAL_DEBUG
+void debug_NMEA () {
+  // Don't re-print the full NMEA line wih the $ to the Serial console,
+  // the GPS will interpret them as commands.
+  String SerialSafeLine = nmeaString;
+  SerialSafeLine.replace("$", "");
+  Serial.println(SerialSafeLine);
+}
+#endif
 
 /*
  * GPS Configuration.

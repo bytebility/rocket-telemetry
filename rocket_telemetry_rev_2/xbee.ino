@@ -38,31 +38,10 @@ void XBee_Init() {
 }
 
 void XBee_Transmit_Data () {
-  if ((currentTime - lastBroadcastTime) < BROADCAST_INTERVAL) {
-    return;
+  if ((currentTime - lastBroadcastTime) >= BROADCAST_INTERVAL) {
+    radio.println(stringifyData());
+    lastBroadcastTime = currentTime;
   }
-
-  String line;
-
-  line.concat(currentTime);
-  line.concat("\t");
-  line.concat(int(altitude));
-  line.concat("\t");
-  line.concat(accelX);
-  line.concat("\t");
-  line.concat(accelY);
-  line.concat("\t");
-  line.concat(accelZ);
-  line.concat("\t");
-  line.concat(gyroX);
-  line.concat("\t");
-  line.concat(gyroY);
-  line.concat("\t");
-  line.concat(gyroZ);
-
-  radio.println(line);
-
-  lastBroadcastTime = currentTime;
 }
 
 void XBee_Transmit_NMEA (String line) {
