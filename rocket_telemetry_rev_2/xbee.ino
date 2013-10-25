@@ -20,7 +20,7 @@
  * Standard 2.4ghz XBee cards can transmit at 250kbps, while the 900mhz cards
  * can transmit at 156kbps, both well above Arduino's 115.2kpbs upper limit.
  */
-#define BAUD_RATE 57600
+#define BAUD_RATE 115200
 
 
 SoftwareSerial radio(8, 9);  // RX, TX
