@@ -19,16 +19,8 @@ Adafruit_GPS GPS(&gpsSerial);
 void GPS_Init () {
   Serial1.print("GPS... ");
   
-   // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
+   // 9600 NMEA is the default baud rate for Adafruit MTK GPS's
   GPS.begin(9600);
-  
-  //GPS.sendCommand("$PMTK251,38400*27");
-  //GPS.begin(38400);
-  //GPS.sendCommand(PMTK_SET_BAUD_57600);
-  //GPS.begin(57600);
-
-  // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
-  //GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
 
   // Only get the GGA and GSA messages
   GPS.sendCommand("$PMTK314,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0*28");

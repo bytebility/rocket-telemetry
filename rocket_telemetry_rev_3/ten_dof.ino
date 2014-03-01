@@ -49,12 +49,14 @@ void Ten_DOF_Update () {
   dataLine.concat("\t");
   dataLine.concat(int(altitude));
   dataLine.concat("\t");
+  // Send acceleration in milliG's
   dataLine.concat(int(event.acceleration.x / SENSORS_GRAVITY_EARTH * 1000));
   dataLine.concat("\t");
   dataLine.concat(int(event.acceleration.y / SENSORS_GRAVITY_EARTH * 1000));
   dataLine.concat("\t");
   dataLine.concat(int(event.acceleration.z / SENSORS_GRAVITY_EARTH * 1000));
   dataLine.concat("\t");
+  // Send rotation in degrees per second
   dataLine.concat(int(event.gyro.x / SENSORS_DPS_TO_RADS));
   dataLine.concat("\t");
   dataLine.concat(int(event.gyro.y / SENSORS_DPS_TO_RADS));

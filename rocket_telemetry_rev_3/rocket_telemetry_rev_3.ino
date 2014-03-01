@@ -35,7 +35,7 @@ void setup () {
 void loop () {
   timeNow = millis();
   
-  // Note that running much higher than 10hz overrun the XBee reciever
+  // Note that running much higher than 10hz can overrun the XBee reciever
   if ((timeNow - timeLast) >= 100) {  // Run at 10hz
     timeLast = timeNow;
     Ten_DOF_Update();
