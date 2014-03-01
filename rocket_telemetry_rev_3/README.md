@@ -9,6 +9,6 @@ An additional analog [Adafruit ADXL377 - High-G Triple-Axis Accelerometer](https
 
 Also included is an [Adafruit Ultimate GPS Breakout](https://www.adafruit.com/products/746) for serial GPS data.
 
-Finally an SPI-based [Adafruit MicroSD board](https://www.adafruit.com/products/254) is available for saving raw data at the source.
+_Originally this setup included an SPI-based [Adafruit MicroSD](https://www.adafruit.com/products/254) module, but there was just not enough [flash memory](http://arduino.cc/en/Tutorial/Memory) available on the Fio to support it._
 
 -30-

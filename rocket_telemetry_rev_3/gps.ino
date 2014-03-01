@@ -56,10 +56,6 @@ void GPS_Update () {
 #ifdef SERIAL_DEBUG
     Serial.println(nmeaString);
 #endif
-
-#ifdef ENABLE_SD
-    SD_Save_Data(nmeaString);
-#endif
   }
 }
 

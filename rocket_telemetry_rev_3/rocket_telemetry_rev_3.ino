@@ -2,18 +2,17 @@
  * Rocket Telemetry Logger, Rev 3
  *
  * Third revision, based on a Sparkfun Fio v3 along with several modules from
- * Adafruit, including an Adafruit 10-DOF IMU Breakout, an ADXL377 and an
- * Adafruit Ultimate GPS Breakout .
+ * Adafruit, including an Adafruit 10-DOF IMU Breakout and an Adafruit Ultimate
+ * GPS Breakout. An Adafruit ADXL377 breakout is used to record acceleration
+ * above 16G's.
  *
- * Data is recorded via an Adafruit MicroSD breakout and transmitted via an
- * XBee radio.
+ * Data is then transmitted via 900mhz XBee radio to the ground.
  */
 
 #include <Adafruit_Sensor.h>
 
 //#define SERIAL_DEBUG
-//#define ENABLE_SD   // (~9.7k)
-#define ENABLE_GPS  // (~2.4k)
+#define ENABLE_GPS
 
 long timeNow = 0;
 long timeLast = 0;
@@ -30,10 +29,6 @@ void setup () {
 
 #ifdef ENABLE_GPS
   GPS_Init();
-#endif
-
-#ifdef ENABLE_SD
-  SD_Init();
 #endif
 }
 

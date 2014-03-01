@@ -66,9 +66,5 @@ void Ten_DOF_Update () {
 #ifdef SERIAL_DEBUG
   Serial.println(dataLine);
 #endif
-  
-#ifdef ENABLE_SD
-  SD_Save_Data(dataLine);
-#endif
 }
 
