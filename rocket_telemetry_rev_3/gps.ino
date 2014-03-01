@@ -48,14 +48,17 @@ void GPS_Init () {
 
 void GPS_Update () {
   if (GPS.newNMEAreceived()) {
-    Serial1.println(GPS.lastNMEA());
+    String nmeaString = GPS.lastNMEA();
+    nmeaString.trim();
+
+    Serial1.println(nmeaString);
     
 #ifdef SERIAL_DEBUG
-    Serial.println(GPS.lastNMEA());
+    Serial.println(nmeaString);
 #endif
 
 #ifdef ENABLE_SD
-    SD_Save_Data(GPS.lastNMEA());
+    SD_Save_Data(nmeaString);
 #endif
   }
 }
