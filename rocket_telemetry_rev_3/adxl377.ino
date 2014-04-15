@@ -40,12 +40,15 @@ int ADXL_ReadAxis (int axisPin) {
 }
 
 void enhanceAcceleration (sensors_event_t *event) {
-  // 152 m/s^2 is ~15.5 G's
+
+  // Note: The ADXL377 is mounted reverse from the 10DOF
+  // Note: 152 m/s^2 is ~15.5 G's
+
   if (event->acceleration.x > 152 || event->acceleration.x < -152) {
-    event->acceleration.x = ADXL_ReadXAccel();
+    event->acceleration.x = ADXL_ReadXAccel() * -1;
   }
   if (event->acceleration.y > 152 || event->acceleration.y < -152) {
-    event->acceleration.y = ADXL_ReadYAccel();
+    event->acceleration.y = ADXL_ReadYAccel() * -1;
   }
   if (event->acceleration.z > 152 || event->acceleration.z < -152) {
     event->acceleration.z = ADXL_ReadZAccel();
