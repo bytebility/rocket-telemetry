@@ -4,15 +4,15 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "SARG Launch Site",
+        "name": "Davis Launch Site",
         "organization": "SARG",
         "URL": "http://sargrocket.org/"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -121.390709,
-          38.819561
+          -121.654273,
+          38.490871
         ]
       }
     },
