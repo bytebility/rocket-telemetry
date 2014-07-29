@@ -29,34 +29,43 @@ void TenDOF_Init() {
 
 void Ten_DOF_Update () {
   sensors_event_t event;
-  
-  float altitude;
 
+  String dataLine;
+  dataLine.concat(timeNow);
+  dataLine.concat("\t");
+
+  // Altitude
+  //
+  float altitude = 0.0;
   bmp.getEvent(&event);
   if (event.pressure) {
     float temperature;
     bmp.getTemperature(&temperature);
 
+    // convert to feet
     altitude = bmp.pressureToAltitude(SENSORS_PRESSURE_SEALEVELHPA, event.pressure, temperature) * 3.28084;
   }
-
-  accel.getEvent(&event);
-  enhanceAcceleration(&event);
-  gyro.getEvent(&event);
-
-  String dataLine;
-  dataLine.concat(timeNow);
-  dataLine.concat("\t");
   dataLine.concat(int(altitude));
   dataLine.concat("\t");
-  // Send acceleration in milliG's
+
+  // Acceleration
+  //
+  accel.getEvent(&event);
+  enhanceAcceleration(&event);
+
+  // convert to milliG's
   dataLine.concat(int(event.acceleration.x / SENSORS_GRAVITY_EARTH * 1000));
   dataLine.concat("\t");
   dataLine.concat(int(event.acceleration.y / SENSORS_GRAVITY_EARTH * 1000));
   dataLine.concat("\t");
   dataLine.concat(int(event.acceleration.z / SENSORS_GRAVITY_EARTH * 1000));
   dataLine.concat("\t");
-  // Send rotation in degrees per second
+
+  // Gyroscope
+  //
+  gyro.getEvent(&event);
+
+  // convert to degrees per second
   dataLine.concat(int(event.gyro.x / SENSORS_DPS_TO_RADS));
   dataLine.concat("\t");
   dataLine.concat(int(event.gyro.y / SENSORS_DPS_TO_RADS));
@@ -64,7 +73,7 @@ void Ten_DOF_Update () {
   dataLine.concat(int(event.gyro.z / SENSORS_DPS_TO_RADS));
 
   Serial1.println(dataLine);
-  
+
 #ifdef SERIAL_DEBUG
   Serial.println(dataLine);
 #endif
