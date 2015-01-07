@@ -22,6 +22,7 @@ void TenDOF_Init() {
 
   bmp.begin(BMP085_MODE_STANDARD);
   accel.begin();
+  accel.setAccelRange(LSM303_ACCEL_RANGE_16);  // Requires https://github.com/lectroidmarc/Adafruit_LSM303DLHC/tree/enableinterrupt 
   gyro.begin(GYRO_RANGE_2000DPS);
 
   Serial1.println("done");
